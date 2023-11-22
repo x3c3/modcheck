@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
-	"modchecker/modchecker"
-	"os"
+	"github.com/x3c3/modcheck"
 )
 
 func main() {
@@ -22,8 +23,8 @@ func main() {
 		gomodpath = os.Args[1] + "go.mod"
 	}
 
-	repos := modchecker.ExtractRepoInfo(gomodpath)
-	modchecker.UpdateAllRepos(repos)
+	repos := modcheck.ExtractRepoInfo(gomodpath)
+	modcheck.UpdateAllRepos(repos)
 
 	app := tview.NewApplication()
 	table := tview.NewTable().SetBorders(true)

@@ -1,14 +1,15 @@
-package modchecker
+package modcheck
 
 import (
 	"bytes"
-	"github.com/json-iterator/go"
-	"golang.org/x/mod/semver"
 	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
+
+	jsoniter "github.com/json-iterator/go"
+	"golang.org/x/mod/semver"
 )
 
 func ExtractRepoInfo(filepath string) (links []Repo) {

@@ -1,4 +1,4 @@
-package modchecker
+package modcheck
 
 import "testing"
 

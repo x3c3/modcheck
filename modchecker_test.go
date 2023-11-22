@@ -1,4 +1,4 @@
-package modchecker
+package modcheck
 
 import (
 	"testing"
@@ -23,7 +23,7 @@ func Test_extractRepoLinks(t *testing.T) {
 			ModVersion: "v1.1.12",
 		},
 	}
-	actual := ExtractRepoInfo("../test_samples/sample_1/go.mod")
+	actual := ExtractRepoInfo("./testdata/sample_1/go.mod")
 	if len(expected) != len(actual) {
 		t.Errorf("expected %v, got %v", expected, actual)
 	}
@@ -39,7 +39,7 @@ func Test_getIOSData(t *testing.T) {
 }
 
 func Test_CheckMod(t *testing.T) {
-	modPath := "../test_samples/sample_1/go.mod"
+	modPath := "./testdata/sample_1/go.mod"
 	links := ExtractRepoInfo(modPath)
 	for i := range links {
 		err := links[i].getOSIData()
@@ -51,7 +51,7 @@ func Test_CheckMod(t *testing.T) {
 }
 
 func Test_UpdateAllRepos(t *testing.T) {
-	modPath := "../test_samples/sample_2/go.mod"
+	modPath := "./testdata/sample_2/go.mod"
 	links := ExtractRepoInfo(modPath)
 	UpdateAllRepos(links)
 	var count int
